@@ -12,7 +12,20 @@ def charactercreation():
     
 @app.route("/wikipage")
 def wikipage():
-    return render_template("wikipage.html")    
+    return render_template("wikipage.html")  
+
+@app.route("/class")
+def classpage():
+    return render_template("classpage.html")
+
+@app.route("/spell")
+def spellpage():
+    return render_template("spellpage.html")
+
+@app.route("/item")
+def itempage():
+    return render_template("itempage.html")
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
