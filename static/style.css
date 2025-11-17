@@ -1,9 +1,14 @@
 body {
-  background-color: powderblue;
+  background-color: white;
 }
+
+body.index{
+	background-color: powderblue;
+}
+
 h1 {
-  color: yellow;
+  color: red;
 }
 p {
-  color: yellow;
+  color: red;
 }
