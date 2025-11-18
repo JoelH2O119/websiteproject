@@ -2,9 +2,38 @@
 <html>
 <head>
     <title>Character creation</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
 </head>
 <body>
-    <h1>About Page</h1>
+
+
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
+        <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+
+    <form>
+        <label>Choose a Class:</label>
+        <select name="class">
+            {% for c in classes %}
+            <option value="{{ c.index }}">{{ c.name }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label>Choose a Race:</label>
+        <select name="race">
+            {% for r in races %}
+            <option value="{{ r.index }}">{{ r.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+
+
     <p>This is another page in your site!</p>
     <a href="{{ url_for('home') }}">Back to Home</a>
 </body>
