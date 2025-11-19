@@ -2,7 +2,8 @@ body {
   background-color: white;
 }
 
-ul {
+/* NAV BAR */
+nav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -10,16 +11,27 @@ ul {
 	display: flex;
 }
 
-	ul li a {
+	nav ul li a {
 		display: block;
 		color: white;
 		padding: 14px 16px;
 		text-decoration: none;
 	}
 
-		ul li a:hover {
+		nav ul li a:hover {
 			background-color: #111111;
 		}
+
+/* SUBCLASS LISTS */
+.subclass-list {
+	list-style-type: disc; /* normal bullets */
+	display: inline-block; /* center the list */
+	text-align: left; /* bullet text aligned left */
+	color: black; /* make text visible */
+	font-size: 20px;
+	margin-top: 10px;
+}
+
 
 body.index{
 	background-color: powderblue;
@@ -30,4 +42,30 @@ h1 {
 }
 p {
   color: red;
+}
+
+
+/* Container for all classes */
+.class-container {
+	text-align: center;
+	margin-top: 40px;
+}
+
+/* Each class section */
+.class-block {
+	margin-bottom: 40px;
+}
+
+	/* Big centered class name */
+	.class-block h2 {
+		font-size: 40px;
+		color: darkblue;
+		margin-bottom: 10px;
+	}
+
+/* Subclass list formatting */
+.subclass-list {
+	display: inline-block; /* keeps bullet list centered */
+	text-align: left; /* bullet text stays left-aligned */
+	font-size: 22px;
 }
