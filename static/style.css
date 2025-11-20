@@ -65,7 +65,23 @@ p {
 
 /* Subclass list formatting */
 .subclass-list {
-	display: inline-block; /* keeps bullet list centered */
-	text-align: left; /* bullet text stays left-aligned */
+	display: none; /* hidden until clicked */
+	margin: 0 auto; /* centers the list */
+	width: fit-content; /* makes the list fit its content */
+	text-align: left; /* left-align bullet labels */
+	list-style-type: disc;
 	font-size: 22px;
+	padding-left: 20px; /* small indent for bullets */
+	margin-top: 10px;
+}
+
+/* Optional: style subclass details */
+.subclass-details {
+	display: none; /* start hidden */
+	margin-left: 15px;
+	font-size: 18px;
+}
+
+table, th, td {
+	border: 1px solid black;
 }

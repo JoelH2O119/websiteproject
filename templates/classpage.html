@@ -3,15 +3,33 @@
 <head>
     <title>class page</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+
+    <style>
+        /* COLLAPSIBLE EFFECT */
+        .subclass-list {
+            display: none; /* hide by default */
+            margin-top: 10px;
+        }
+
+        .class-block h2 {
+            cursor: pointer;
+            user-select: none;
+        }
+
+            .class-block h2:hover {
+                color: #0044cc;
+            }
+    </style>
+
 </head>
 <body>
     <nav>
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
-        <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
-        <li><a href="#about">About</a></li>
-    </ul>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
+            <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
     </nav>
     <h1>Welcome to My Flask Site</h1>
     <p>class page.</p>
@@ -23,34 +41,272 @@
 
     <div class="class-container">
 
+        <!-- BARBARIAN -->
         <div class="class-block">
-            <h2>Warrior</h2>
+            <h2 class="toggle">Barbarian</h2>
             <ul class="subclass-list">
-                <li>Berserker</li>
-                <li>Knight</li>
-                <li>Champion</li>
+                <li>
+                    <span class="subclass-name">Path of the Ancestral Guardian</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">Path of the Battlerager</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">Path of the Beast</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">Path of the Giant</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">Path of the Storm Herald</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">Path of the Totem Warrior</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">Path of Wild Magic</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">Path of the Zealot</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
             </ul>
         </div>
 
+        <!-- BARD -->
         <div class="class-block">
-            <h2>Mage</h2>
+            <h2 class="toggle">Bard</h2>
             <ul class="subclass-list">
-                <li>Fire Wizard</li>
-                <li>Ice Sorcerer</li>
-                <li>Arcane Adept</li>
+                <li>
+                    <span class="subclass-name">College of Creation</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">College of Eloquence</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">College of Glamour</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">College of Lore</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">College of Spirits</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">College of Swords</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">College of Valor</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
+                <li>
+                    <span class="subclass-name">College of Whispers</span>
+                    <div class="subclass-details"><p>Subclass details go here...</p></div>
+                </li>
             </ul>
         </div>
 
+        <!-- CLERIC -->
         <div class="class-block">
-            <h2>Rogue</h2>
+            <h2 class="toggle">Cleric</h2>
             <ul class="subclass-list">
-                <li>Assassin</li>
-                <li>Shadow Dancer</li>
-                <li>Thief</li>
+                <li><span class="subclass-name">Arcana Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Death Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Forge Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Grave Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Knowledge Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Life Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Light Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Nature Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Order Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Peace Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Tempest Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Trickery Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Twilight Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">War Domain</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
             </ul>
         </div>
+
+        <!-- DRUID -->
+        <div class="class-block">
+            <h2 class="toggle">Druid</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Circle of Dreams</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Circle of the Land</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Circle of the Moon</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Circle of the Shepherd</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Circle of Spores</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Circle of Stars</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Circle of Wildfire</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- FIGHTER -->
+        <div class="class-block">
+            <h2 class="toggle">Fighter</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Arcane Archer</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Banneret</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Battle Master</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Cavalier</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Champion</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Echo Knight</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Eldritch Knight</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Psi Warrior</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Rune Knight</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Samurai</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- MONK -->
+        <div class="class-block">
+            <h2 class="toggle">Monk</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Way of Mercy</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Ascendant Dragon</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Astral Self</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Drunken Master</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Four Elements</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Kensei</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Long Death</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Open Hand</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of Shadow</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Way of the Sun Soul</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- PALADIN -->
+        <div class="class-block">
+            <h2 class="toggle">Paladin</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Oath of the Ancients</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oath of Conquest</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oath of the Crown</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oath of Devotion</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oath of Glory</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oath of Redemption</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oath of Vengeance</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oath of the Watchers</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Oathbreaker</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- RANGER -->
+        <div class="class-block">
+            <h2 class="toggle">Ranger</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Beast Master Conclave</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Drakewarden</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Fey Wanderer</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Gloom Stalker Conclave</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Horizon Walker Conclave</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Hunter Conclave</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Monster Slayer Conclave</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Swarmkeeper</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- ROGUE -->
+        <div class="class-block">
+            <h2 class="toggle">Rogue</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Arcane Trickster</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Assassin</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Inquisitive</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Mastermind</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Phantom</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Scout</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Soulknife</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Swashbuckler</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Thief</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- SORCERER -->
+        <div class="class-block">
+            <h2 class="toggle">Sorcerer</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Aberrant Mind</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Clockwork Soul</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Draconic Bloodline</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Divine Soul</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Lunar Sorcery</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Shadow Magic</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Storm Sorcery</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Wild Magic</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- WARLOCK -->
+        <div class="class-block">
+            <h2 class="toggle">Warlock</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">Archfey</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Celestial</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Fathomless</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Fiend</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">The Genie</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Great Old One</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Hexblade</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Undead</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Undying</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
+        <!-- WIZARD -->
+        <div class="class-block">
+            <h2 class="toggle">Wizard</h2>
+            <ul class="subclass-list">
+                <li><span class="subclass-name">School of Abjuration</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Bladesinging</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Chronurgy</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Conjuration</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Divination</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Enchantment</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Evocation</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Graviturgy</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Illusion</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">Order of Scribes</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Transmutation</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of War Magic</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+                <li><span class="subclass-name">School of Necromancy</span><div class="subclass-details"><p>Subclass details go here...</p></div></li>
+            </ul>
+        </div>
+
 
     </div>
+
+    <script>
+        // Toggle subclass list when clicking the class name
+        document.querySelectorAll(".toggle").forEach(classTitle => {
+            classTitle.addEventListener("click", () => {
+                const list = classTitle.nextElementSibling;
+                list.style.display = list.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        // Toggle subclass details when clicking subclass name
+        document.querySelectorAll(".subclass-name").forEach(subclass => {
+            subclass.addEventListener("click", () => {
+                const details = subclass.nextElementSibling;
+                details.style.display = details.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+
 
 
 

@@ -1,4 +1,19 @@
+# Visual Studio files
+.vs/
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Python virtual environment
 env/
-*.pyc
+venv/
+
+# Python bytecode
 __pycache__/
-instance/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
