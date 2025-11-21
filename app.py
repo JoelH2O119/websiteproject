@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import requests
+import csv
 
 app = Flask(__name__)
 
@@ -31,10 +32,16 @@ def classpage():
     return render_template("classpage.html")
 
 
-@app.route("/spell")
+@app.route("/spellpage")
 def spellpage():
-    spell_list = requests.get(f"{API_BASE}/spells").json().get("results", [])
-    return render_template("spellpage.html", spells=spell_list)
+    spells = []
+    with open("dnd-spells.csv", newline="", encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            spells.append(row)
+
+    return render_template("spellpage.html", spells=spells)
+
 
 
 @app.route("/item")
