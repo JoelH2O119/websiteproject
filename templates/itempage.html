@@ -6,18 +6,184 @@
 </head>
 <body>
     <nav>
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
-        <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
-        <li><a href="#about">About</a></li>
-    </ul>
-</nav>
-    <h1>Welcome to My Flask Site</h1>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
+            <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
     <p>item page.</p>
     <!-- Link to another page -->
     <div><a href="{{ url_for('classpage') }}">Go to class Page</a></div>
     <div><a href="{{ url_for('spellpage') }}">Go to spell Page</a></div>
     <a href="{{ url_for('charactercreation') }}">Go to character creation Page</a>
+
+    <h1>Armor</h1>
+    <h2>Light Armor</h2>
+
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Armor Class(AC)</th>
+            <th>Strength requirment</th>
+            <th>Stealth</th>
+            <th>Weight</th>
+            <th>Cost</th>
+        </tr>
+        <tr>
+            <th>Padded</th>
+            <th>11 + Dex modifier</th>
+            <th>-</th>
+            <th>Disadvantage</th>
+            <th>8 lb.</th>
+            <th>5 gp</th>
+        </tr>
+        <tr>
+            <th>Leather</th>
+            <th>11 + Dex modifier</th>
+            <th>-</th>
+            <th>-</th>
+            <th>10 lb.</th>
+            <th>10 gp</th>
+        </tr>
+        <tr>
+            <th>Studded Leather</th>
+            <th>12 + Dex Modifier</th>
+            <th>-</th>
+            <th>-</th>
+            <th>13 lb.</th>
+            <th>45 gp</th>
+        </tr>
+    </table>
+
+    <h2>Medium Armor</h2>
+
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Armor Class(AC)</th>
+            <th>Strength requirment</th>
+            <th>Stealth</th>
+            <th>Weight</th>
+            <th>Cost</th>
+        </tr>
+        <tr>
+            <th>Hide</th>
+            <th>12 + Dex modifier (max 2)</th>
+            <th>-</th>
+            <th>-</th>
+            <th>12 lb.</th>
+            <th>10 gp</th>
+        </tr>
+        <tr>
+            <th>Chain Shirt</th>
+            <th>13 + Dex modifier (max 2)</th>
+            <th>-</th>
+            <th>-</th>
+            <th>20 lb.</th>
+            <th>50 gp</th>
+        </tr>
+        <tr>
+            <th>Scale Mail</th>
+            <th>14 + Dex modifier (max 2)</th>
+            <th>-</th>
+            <th>Disadvantage</th>
+            <th>45 lb.</th>
+            <th>50 gp</th>
+        </tr>
+        <tr>
+            <th>Spiked Armor</th>
+            <th>14 + Dex modifier (max 2)</th>
+            <th>-</th>
+            <th>Disadvantage</th>
+            <th>45 lb.</th>
+            <th>75 gp</th>
+        </tr>
+        <tr>
+            <th>Breastplate</th>
+            <th>14 + Dex modifier (max 2)</th>
+            <th>-</th>
+            <th>-</th>
+            <th>13 lb.</th>
+            <th>45 gp</th>
+        </tr>
+        <tr>
+            <th>Halfplate</th>
+            <th>15 + Dex modifier (max 2)</th>
+            <th>-</th>
+            <th>Disadvantage</th>
+            <th>20 lb.</th>
+            <th>750 gp</th>
+        </tr>
+    </table>
+
+    <h2>Heavy Armor</h2>
+
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Armor Class(AC)</th>
+            <th>Strength requirment</th>
+            <th>Stealth</th>
+            <th>Weight</th>
+            <th>Cost</th>
+        </tr>
+        <tr>
+            <th>Ring Mail</th>
+            <th>14</th>
+            <th>-</th>
+            <th>Disadvantage</th>
+            <th>40 lb.</th>
+            <th>30 gp</th>
+        </tr>
+        <tr>
+            <th>Chain Mail</th>
+            <th>16</th>
+            <th>Str 13</th>
+            <th>Disadvantage</th>
+            <th>55 lb.</th>
+            <th>75 gp</th>
+        </tr>
+        <tr>
+            <th>Splint</th>
+            <th>17</th>
+            <th>Str 15</th>
+            <th>Disadvantage</th>
+            <th>60 lb.</th>
+            <th>200 gp</th>
+        </tr>
+        <tr>
+            <th>Plate</th>
+            <th>18</th>
+            <th>Str 15</th>
+            <th>Disadvantage</th>
+            <th>65 lb.</th>
+            <th>1500 gp</th>
+        </tr>
+    </table>
+
+    <h2>Shield</h2>
+
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Armor Class(AC)</th>
+            <th>Strength requirment</th>
+            <th>Stealth</th>
+            <th>Weight</th>
+            <th>Cost</th>
+        </tr>
+        <tr>
+            <th>Shield</th>
+            <th>+2</th>
+            <th>-</th>
+            <th>-</th>
+            <th>6 lb.</th>
+            <th>10 gp</th>
+        </tr>
+        
+    </table>
 </body>
 </html>
