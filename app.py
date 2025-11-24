@@ -1,20 +1,21 @@
-from flask import Flask, render_template, redirect, url_for, flash, request
-from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
+from flask import Flask, render_template, redirect, url_for, flash, request, session
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import requests
 import csv
 
-# ---------------- FLASK APP SETUP ---------------- #
 app = Flask(__name__)
 app.secret_key = "something-very-secret-change-this"
 
 API_BASE = "https://www.dnd5eapi.co/api/2014"
 
-# ---------------- DATABASE ---------------- #
+# ---------------- DATABASE INIT ---------------- #
+
 def init_db():
     conn = sqlite3.connect("users.db")
     c = conn.cursor()
+
+    # Users table
     c.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,74 +23,63 @@ def init_db():
             password_hash TEXT NOT NULL
         )
     """)
+
+    # Characters table
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS characters (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            class TEXT,
+            race TEXT,
+            alignment TEXT,
+            str INTEGER,
+            dex INTEGER,
+            con INTEGER,
+            int INTEGER,
+            wis INTEGER,
+            cha INTEGER,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    """)
+
     conn.commit()
     conn.close()
 
-init_db()  # call this at startup
+init_db()
 
-# ---------------- LOGIN SYSTEM ---------------- #
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
 
-class User(UserMixin):
-    def __init__(self, id, username, password_hash):
-        self.id = id
-        self.username = username
-        self.password_hash = password_hash
+# ---------------- LOGIN HELPERS ---------------- #
 
-@login_manager.user_loader
-def load_user(user_id):
-    conn = sqlite3.connect("users.db")
-    c = conn.cursor()
-    c.execute("SELECT id, username, password_hash FROM users WHERE id = ?", (user_id,))
-    row = c.fetchone()
-    conn.close()
-    if row:
-        return User(id=row[0], username=row[1], password_hash=row[2])
+def login_required(f):
+    """Decorator to restrict access to logged-in users."""
+    from functools import wraps
+    @wraps(f)
+    def wrapped(*args, **kwargs):
+        if "user_id" not in session:
+            flash("You must be logged in to access this page.")
+            return redirect(url_for("login"))
+        return f(*args, **kwargs)
+    return wrapped
+
+def get_current_user():
+    """Return the logged-in user's info from the database."""
+    if "user_id" in session:
+        conn = sqlite3.connect("users.db")
+        c = conn.cursor()
+        c.execute("SELECT id, username FROM users WHERE id = ?", (session["user_id"],))
+        row = c.fetchone()
+        conn.close()
+        if row:
+            return {"id": row[0], "username": row[1]}
     return None
+
 
 # ---------------- ROUTES ---------------- #
 
 @app.route("/")
 def home():
-    return render_template("index.html")
-
-@app.route("/charactercreation")
-@login_required
-def charactercreation():
-    classes = requests.get(f"{API_BASE}/classes").json().get("results", [])
-    races   = requests.get(f"{API_BASE}/races").json().get("results", [])
-    return render_template("charactercreation.html", classes=classes, races=races)
-
-@app.route("/wikipage")
-def wikipage():
-    return render_template("wikipage.html")
-
-@app.route("/classpage")
-def classpage():
-    return render_template("classpage.html")
-
-@app.route('/class/<index>')
-def class_detail(index):
-    data = requests.get(f"{API_BASE}/classes/{index}").json()
-    return render_template("class_detail.html", data=data)
-
-@app.route("/spellpage")
-def spellpage():
-    spells = []
-    with open("dnd-spells.csv", newline="", encoding="utf-8") as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            spells.append(row)
-    return render_template("spellpage.html", spells=spells)
-
-@app.route("/item")
-def itempage():
-    item_list = requests.get(f"{API_BASE}/equipment").json().get("results", [])
-    return render_template("itempage.html", items=item_list)
-
-# ---------------- AUTH ROUTES ---------------- #
+    return render_template("index.html", user=get_current_user())
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -128,8 +118,7 @@ def login():
         conn.close()
 
         if row and check_password_hash(row[1], password):
-            user = User(id=row[0], username=username, password_hash=row[1])
-            login_user(user)
+            session["user_id"] = row[0]
             flash("Logged in successfully!")
             return redirect(url_for("home"))
         else:
@@ -139,12 +128,91 @@ def login():
     return render_template("login.html")
 
 @app.route("/logout")
-@login_required
 def logout():
-    logout_user()
+    session.pop("user_id", None)
     flash("Logged out successfully.")
     return redirect(url_for("home"))
 
+# ---------------- RESTRICTED PAGES ---------------- #
+
+@app.route("/charactercreation")
+@login_required
+def charactercreation():
+    classes = requests.get(f"{API_BASE}/classes").json().get("results", [])
+    races = requests.get(f"{API_BASE}/races").json().get("results", [])
+    return render_template("charactercreation.html", classes=classes, races=races)
+
+@app.route("/createcharacter", methods=["POST"])
+@login_required
+def create_character():
+    data = request.form
+    user = get_current_user()
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("""
+        INSERT INTO characters 
+        (user_id, name, class, race, alignment, str, dex, con, int, wis, cha)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        user["id"],
+        data["name"],
+        data["class"],
+        data["race"],
+        data["alignment"],
+        data["str"],
+        data["dex"],
+        data["con"],
+        data["int"],
+        data["wis"],
+        data["cha"]
+    ))
+    conn.commit()
+    conn.close()
+    flash("Character created!")
+    return redirect(url_for("character_list"))
+
+@app.route("/characters")
+@login_required
+def character_list():
+    user = get_current_user()
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM characters WHERE user_id = ?", (user["id"],))
+    chars = c.fetchall()
+    conn.close()
+    return render_template("my_character.html", chars=chars)
+
+# ---------------- OTHER PAGES ---------------- #
+
+@app.route("/wikipage")
+def wikipage():
+    return render_template("wikipage.html")
+
+@app.route("/classpage")
+def classpage():
+    return render_template("classpage.html")
+
+@app.route('/class/<index>')
+def class_detail(index):
+    data = requests.get(f"{API_BASE}/classes/{index}").json()
+    return render_template("class_detail.html", data=data)
+
+@app.route("/spellpage")
+def spellpage():
+    spells = []
+    with open("dnd-spells.csv", newline="", encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            spells.append(row)
+    return render_template("spellpage.html", spells=spells)
+
+@app.route("/item")
+def itempage():
+    item_list = requests.get(f"{API_BASE}/equipment").json().get("results", [])
+    return render_template("itempage.html", items=item_list)
+
+
 # ---------------- RUN APP ---------------- #
+
 if __name__ == "__main__":
     app.run(debug=True)
