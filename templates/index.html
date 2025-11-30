@@ -8,18 +8,20 @@
     <nav>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
-            <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="{{ url_for('charactercreation') }}">Character Creation</a></li>
+            <li><a href="{{ url_for('wikipage') }}">Wiki</a></li>
         </ul>
     </nav>
 
+   
+    <div class="hero-image"></div>
+
     <h1>Welcome to My Flask Site</h1>
-    <p>This is the home page.</p>
+    <p>Embark on your D&D adventure!</p>
 
-    <!-- Link to the login page -->
-    <a href="{{ url_for('login') }}"><button>Login</button></a>
-
-    <li><a href="{{ url_for('charactercreation') }}">Make a character</a></li>
+    <a href="{{ url_for('login') }}" class="hero-button">Login</a>
+    <a href="{{ url_for('register') }}" class="hero-button">Create Account</a>
+    <a href="{{ url_for('charactercreation') }}" class="hero-button">Create Character</a>
+    <a href="{{ url_for('wikipage') }}" class="hero-button">Go to Wiki</a>
 </body>
 </html>

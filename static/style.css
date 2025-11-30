@@ -1,83 +1,127 @@
+/* 
+   GLOBAL STYLES
+ */
 body {
-  background-color: white;
-}
-
-/* NAV BAR */
-nav ul {
-	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	background-color: #333333;
-	display: flex;
+	background-color: white;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-	nav ul li a {
-		display: block;
-		color: white;
-		padding: 14px 16px;
-		text-decoration: none;
+h1, p {
+	margin: 0;
+}
+
+
+/* 
+   NAVIGATION BAR (Used on ALL pages)
+ */
+nav {
+	width: 100%;
+}
+
+	nav ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		background-color: #222;
+		display: flex;
+		justify-content: center;
 	}
 
-		nav ul li a:hover {
-			background-color: #111111;
+		nav ul li a {
+			display: block;
+			color: white !important; /* Navbar text ALWAYS white */
+			padding: 14px 20px;
+			text-decoration: none;
+			font-weight: bold;
+			outline: none !important; /* Remove blue outline */
 		}
 
-/* SUBCLASS LISTS */
-.subclass-list {
-	list-style-type: disc; /* normal bullets */
-	display: inline-block; /* center the list */
-	text-align: left; /* bullet text aligned left */
-	color: black; /* make text visible */
+			nav ul li a:hover {
+				background-color: #444;
+				border-radius: 4px;
+			}
+
+
+/*
+   INDEX PAGE STYLES
+ */
+body.index {
+	background: linear-gradient(to bottom right, #f0e6d2, #c9b89d);
+	text-align: center;
+}
+
+	body.index h1 {
+		font-size: 50px;
+		color: #3a2f1d;
+		margin-top: 50px;
+	}
+
+	body.index p {
+		font-size: 20px;
+		color: #4a3f2f;
+	}
+
+.hero-button {
+	display: inline-block;
+	margin: 20px 10px;
+	padding: 15px 30px;
 	font-size: 20px;
-	margin-top: 10px;
+	background-color: #8b0000;
+	color: white;
+	border-radius: 8px;
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+	.hero-button:hover {
+		background-color: #b22222;
+	}
+
+.hero-image {
+	width: 150px;
+	height: 150px;
+	margin: 20px auto;
+	background-color: #ddd;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	color: #888;
 }
 
 
-body.index{
-	background-color: powderblue;
-}
-
-h1 {
-  color: red;
-}
-p {
-  color: red;
-}
-
-
-/* Container for all classes */
+/* 
+   CLASS PAGE / SPELL PAGE / ITEM PAGE ELEMENTS
+*/
 .class-container {
 	text-align: center;
 	margin-top: 40px;
 }
 
-/* Each class section */
 .class-block {
 	margin-bottom: 40px;
 }
 
-	/* Big centered class name */
 	.class-block h2 {
 		font-size: 40px;
 		color: darkblue;
 		margin-bottom: 10px;
 	}
 
-/* Subclass list formatting */
 .subclass-list {
-	display: none; /* hidden until clicked */
-	margin: 0 auto; /* centers the list */
-	width: fit-content; /* makes the list fit its content */
-	text-align: left; /* left-align bullet labels */
+	display: none;
+	margin: 0 auto;
+	width: fit-content;
 	list-style-type: disc;
 	font-size: 22px;
-	padding-left: 20px; /* small indent for bullets */
-	margin-top: 10px;
+	padding-left: 20px;
 }
 
-/* Optional: style subclass details */
 .subclass-details {
-	display: none; /* start hidden */
+	display: none;
 	margin-left: 15px;
 	font-size: 18px;
 }
@@ -87,32 +131,29 @@ table, th, td {
 }
 
 
-/* The Modal (background) */
+/* 
+   MODAL STYLES
+ */
 .modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+	display: none;
+	position: fixed;
+	z-index: 1;
 	left: 0;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.4);
 	padding-top: 60px;
 }
 
-/* Modal Content/Box */
 .modal-content {
 	background-color: #fefefe;
-	margin: 5px auto; /* 15% from the top and centered */
+	margin: 5px auto;
 	border: 1px solid #888;
-	width: 80%; /* Could be more or less, depending on screen size */
+	width: 80%;
 }
 
-/* The Close Button */
 .close {
-	/* Position it in the top right corner outside of the modal */
 	position: absolute;
 	right: 25px;
 	top: 0;
@@ -121,36 +162,74 @@ table, th, td {
 	font-weight: bold;
 }
 
-
-	/* Close button on hover */
-	.close:hover,
-	.close:focus {
+	.close:hover {
 		color: red;
 		cursor: pointer;
 	}
 
-/* Add Zoom Animation */
 .animate {
-	-webkit-animation: animatezoom 0.6s;
-	animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-	from {
-		-webkit-transform: scale(0)
-	}
-
-	to {
-		-webkit-transform: scale(1)
-	}
+	animation: animatezoom 0.6s;
 }
 
 @keyframes animatezoom {
 	from {
-		transform: scale(0)
+		transform: scale(0);
 	}
 
 	to {
-		transform: scale(1)
+		transform: scale(1);
 	}
+}
+
+
+/* 
+   WIKI PAGE STYLES
+*/
+body.wiki {
+	background-color: #fdf6e3;
+	text-align: center;
+}
+
+	body.wiki h1 {
+		font-size: 48px;
+		color: #2c3e50;
+		margin: 40px 0 20px 0;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+	}
+
+	body.wiki p {
+		font-size: 20px;
+		color: #4a3f2f;
+		margin-bottom: 30px;
+	}
+
+	/* Wiki page content links */
+	body.wiki .wiki-link {
+		display: inline-block;
+		margin: 10px;
+		padding: 12px 25px;
+		background-color: #e6e0d0;
+		color: black !important; 
+		text-decoration: none;
+		font-weight: bold;
+		border-radius: 6px;
+		transition: background-color 0.2s, transform 0.2s;
+	}
+
+		body.wiki .wiki-link:hover {
+			background-color: #ccc6b5;
+			transform: translateY(-2px);
+		}
+
+.wiki-header-image {
+	width: 200px;
+	height: 200px;
+	background-color: #ddd;
+	border-radius: 50%;
+	margin: 0 auto 20px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	color: #aaa;
 }

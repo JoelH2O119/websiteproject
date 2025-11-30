@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
 
     <style>
-        /* COLLAPSIBLE EFFECT */
+      
         .subclass-list {
-            display: none; /* hide by default */
+            display: none; 
             margin-top: 10px;
         }
 
@@ -22,7 +22,8 @@
     </style>
 
 </head>
-<body>
+<body class="class-page">
+
     <nav>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -31,11 +32,8 @@
             <li><a href="#about">About</a></li>
         </ul>
     </nav>
-    <h1>Welcome to My Flask Site</h1>
-    <p>class page.</p>
-    <!-- Link to another page -->
-    <div><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></div>
-    <a href="{{ url_for('charactercreation') }}">Go to character creation Page</a>
+   
+    
 
 
 
@@ -310,5 +308,5 @@
 
 
 
-</body>
+    </>
 </html>
