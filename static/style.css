@@ -1,127 +1,140 @@
-/* 
-   GLOBAL STYLES
- */
-body {
-	margin: 0;
-	padding: 0;
-	background-color: white;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-h1, p {
-	margin: 0;
+
+:root {
+	--bg-dark: #1e1e1e;
+	--bg-light: #2b2b2b;
+	--accent: #c9aa71;
+	--text-light: #f5f5f5;
 }
 
 
-/* 
-   NAVIGATION BAR (Used on ALL pages)
- */
-nav {
-	width: 100%;
+
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--bg-dark);
+	padding: 10px 20px;
 }
 
-	nav ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		background-color: #222;
+	.navbar ul {
+		list-style: none;
 		display: flex;
-		justify-content: center;
+		gap: 15px;
+		margin: 0;
 	}
 
-		nav ul li a {
-			display: block;
-			color: white !important; /* Navbar text ALWAYS white */
-			padding: 14px 20px;
-			text-decoration: none;
-			font-weight: bold;
-			outline: none !important; /* Remove blue outline */
+	.navbar a {
+		color: var(--text-light);
+		text-decoration: none;
+		padding: 8px 12px;
+	}
+
+		.navbar a:hover {
+			background-color: var(--bg-light);
+			border-radius: 4px;
 		}
 
-			nav ul li a:hover {
-				background-color: #444;
-				border-radius: 4px;
-			}
+.logo {
+	color: var(--accent);
+	font-weight: bold;
+}
 
 
-/*
-   INDEX PAGE STYLES
- */
+
+
 body.index {
-	background: linear-gradient(to bottom right, #f0e6d2, #c9b89d);
+	background: radial-gradient(circle, #2b2b2b, #121212);
+	color: var(--text-light);
+	margin: 0;
+	font-family: "Trebuchet MS", serif;
+}
+
+.hero {
 	text-align: center;
+	padding: 100px 20px;
 }
 
-	body.index h1 {
-		font-size: 50px;
-		color: #3a2f1d;
-		margin-top: 50px;
+	.hero h1 {
+		font-size: 48px;
+		color: var(--accent);
 	}
 
-	body.index p {
+	.hero p {
 		font-size: 20px;
-		color: #4a3f2f;
+		max-width: 600px;
+		margin: 20px auto;
 	}
 
-.hero-button {
-	display: inline-block;
-	margin: 20px 10px;
-	padding: 15px 30px;
-	font-size: 20px;
-	background-color: #8b0000;
-	color: white;
-	border-radius: 8px;
+
+
+
+
+.btn {
+	padding: 12px 24px;
 	text-decoration: none;
-	transition: background-color 0.2s;
+	font-size: 18px;
+	border-radius: 6px;
+	margin: 10px;
+	display: inline-block;
 }
 
-	.hero-button:hover {
-		background-color: #b22222;
+.primary {
+	background-color: var(--accent);
+	color: black;
+}
+
+	.primary:hover {
+		background-color: #e6c98c;
 	}
 
-.hero-image {
-	width: 150px;
-	height: 150px;
-	margin: 20px auto;
-	background-color: #ddd;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 50px;
-	color: #888;
+.secondary {
+	border: 2px solid var(--accent);
+	color: var(--accent);
 }
 
+	.secondary:hover {
+		background-color: var(--accent);
+		color: black;
+	}
 
-/* 
-   CLASS PAGE / SPELL PAGE / ITEM PAGE ELEMENTS
-*/
+
+
+
+/* Container for all classes */
 .class-container {
 	text-align: center;
 	margin-top: 40px;
 }
 
+/* Each class section */
 .class-block {
 	margin-bottom: 40px;
 }
 
+	/* Big centered class name */
 	.class-block h2 {
 		font-size: 40px;
 		color: darkblue;
 		margin-bottom: 10px;
 	}
 
+/* Subclass list formatting */
 .subclass-list {
-	display: none;
-	margin: 0 auto;
-	width: fit-content;
+	display: none; /* hidden until clicked */
+	margin: 0 auto; /* centers the list */
+	width: fit-content; /* makes the list fit its content */
+	text-align: left; /* left-align bullet labels */
 	list-style-type: disc;
 	font-size: 22px;
-	padding-left: 20px;
+	padding-left: 20px; /* small indent for bullets */
+	margin-top: 10px;
 }
 
+/* Optional: style subclass details */
 .subclass-details {
-	display: none;
+	display: none; /* start hidden */
 	margin-left: 15px;
 	font-size: 18px;
 }
@@ -131,29 +144,32 @@ table, th, td {
 }
 
 
-/* 
-   MODAL STYLES
- */
+/* The Modal (background) */
 .modal {
-	display: none;
-	position: fixed;
-	z-index: 1;
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
 	left: 0;
 	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.4);
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	padding-top: 60px;
 }
 
+/* Modal Content/Box */
 .modal-content {
 	background-color: #fefefe;
-	margin: 5px auto;
+	margin: 5px auto; /* 15% from the top and centered */
 	border: 1px solid #888;
-	width: 80%;
+	width: 80%; /* Could be more or less, depending on screen size */
 }
 
+/* The Close Button */
 .close {
+	/* Position it in the top right corner outside of the modal */
 	position: absolute;
 	right: 25px;
 	top: 0;
@@ -162,74 +178,299 @@ table, th, td {
 	font-weight: bold;
 }
 
-	.close:hover {
+
+	/* Close button on hover */
+	.close:hover,
+	.close:focus {
 		color: red;
 		cursor: pointer;
 	}
 
+/* Add Zoom Animation */
 .animate {
-	animation: animatezoom 0.6s;
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+	from {
+		-webkit-transform: scale(0)
+	}
+
+	to {
+		-webkit-transform: scale(1)
+	}
 }
 
 @keyframes animatezoom {
 	from {
-		transform: scale(0);
+		transform: scale(0)
 	}
 
 	to {
-		transform: scale(1);
+		transform: scale(1)
 	}
 }
 
+.wiki .wiki-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	margin: 40px 0;
+}
 
-/* 
-   WIKI PAGE STYLES
-*/
+	.wiki .wiki-links a {
+		min-width: 150px;
+		text-align: center;
+	}
+
 body.wiki {
-	background-color: #fdf6e3;
+	background: radial-gradient(circle, #2b2b2b, #121212);
+	color: var(--text-light);
+	margin: 0;
+	font-family: "Trebuchet MS", serif;
+}
+
+
+body.classpage {
+	background: radial-gradient(circle, #2b2b2b, #121212);
+	color: var(--text-light);
+	margin: 0;
+	font-family: "Trebuchet MS", serif;
+}
+
+.class-container {
+	max-width: 900px;
+	margin: 40px auto;
+	padding: 0 20px;
+}
+
+.class-block {
+	background-color: var(--bg-light);
+	border-radius: 8px;
+	margin-bottom: 20px;
+	padding: 15px 20px;
+}
+
+	.class-block h2 {
+		cursor: pointer;
+		user-select: none;
+		color: var(--accent);
+		margin: 0;
+	}
+
+		.class-block h2:hover {
+			color: #e6c98c;
+		}
+
+.subclass-list {
+	display: none;
+	margin-top: 10px;
+	padding-left: 20px;
+}
+
+.subclass-name {
+	cursor: pointer;
+	font-weight: bold;
+	display: block;
+	margin: 5px 0;
+}
+
+.subclass-details {
+	display: none;
+	padding-left: 15px;
+	font-size: 16px;
+	color: var(--text-light);
+}
+
+
+
+body.spellpage {
+	background: radial-gradient(circle, #2b2b2b, #121212);
+	color: var(--text-light);
+	margin: 0;
+	font-family: "Trebuchet MS", serif;
+}
+
+.table-container {
+	max-width: 1000px;
+	margin: 40px auto;
+	padding: 0 20px;
+	overflow-x: auto;
+}
+
+.spell-table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: var(--bg-light);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+	.spell-table th,
+	.spell-table td {
+		border: 1px solid #444;
+		padding: 10px 15px;
+		text-align: left;
+	}
+
+	.spell-table th {
+		background-color: var(--bg-dark);
+		color: var(--accent);
+		position: sticky;
+		top: 0;
+	}
+
+	.spell-table tr:nth-child(even) {
+		background-color: #2f2f2f;
+	}
+
+	.spell-table tr:hover {
+		background-color: #444;
+	}
+
+.table-filter {
+	max-width: 1000px;
+	margin: 20px auto;
+	text-align: left;
+}
+
+	.table-filter input {
+		width: 100%;
+		padding: 10px;
+		border-radius: 6px;
+		border: none;
+		background-color: var(--bg-light);
+		color: var(--text-light);
+	}
+
+
+body.itempage {
+	background: radial-gradient(circle, #2b2b2b, #121212);
+	color: var(--text-light);
+	margin: 0;
+	font-family: "Trebuchet MS", serif;
+}
+
+.table-container {
+	max-width: 1000px;
+	margin: 40px auto;
+	padding: 0 20px;
+	overflow-x: auto;
+}
+
+.item-table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: var(--bg-light);
+	border-radius: 8px;
+	overflow: hidden;
+	margin-bottom: 40px;
+}
+
+	.item-table th,
+	.item-table td {
+		border: 1px solid #444;
+		padding: 10px 15px;
+		text-align: left;
+	}
+
+	.item-table th {
+		background-color: var(--bg-dark);
+		color: var(--accent);
+		position: sticky;
+		top: 0;
+	}
+
+	.item-table tr:nth-child(even) {
+		background-color: #2f2f2f;
+	}
+
+	.item-table tr:hover {
+		background-color: #444;
+	}
+
+
+
+body.charactercreation {
+	background: radial-gradient(circle, #2b2b2b, #121212);
+	color: var(--text-light);
+	margin: 0;
+	font-family: "Trebuchet MS", serif;
+}
+
+.charactercreation nav {
+	background-color: var(--bg-dark);
+	padding: 10px 20px;
+}
+
+	.charactercreation nav ul {
+		list-style: none;
+		display: flex;
+		gap: 15px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.charactercreation nav a {
+		color: var(--text-light);
+		text-decoration: none;
+		padding: 8px 12px;
+	}
+
+		.charactercreation nav a:hover {
+			background-color: var(--bg-light);
+			border-radius: 4px;
+		}
+
+.charactercreation .container {
+	max-width: 500px;
+	margin: 40px auto;
+	background-color: var(--bg-light);
+	padding: 30px 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.charactercreation h2 {
+	text-align: center;
+	color: var(--accent);
+	margin-bottom: 20px;
+}
+
+.charactercreation label {
+	display: block;
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+.charactercreation input[type="text"],
+.charactercreation input[type="number"],
+.charactercreation select {
+	width: 95%;
+	padding: 10px, 12px;
+	margin-top: 5px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--bg-dark);
+	color: var(--text-light);
+}
+
+.charactercreation a.back-link {
+	display: block;
+	margin-top: 20px;
+	color: var(--accent);
+	text-decoration: none;
 	text-align: center;
 }
 
-	body.wiki h1 {
-		font-size: 48px;
-		color: #2c3e50;
-		margin: 40px 0 20px 0;
-		text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+	.charactercreation a.back-link:hover {
+		color: #e6c98c;
 	}
 
-	body.wiki p {
-		font-size: 20px;
-		color: #4a3f2f;
-		margin-bottom: 30px;
-	}
-
-	/* Wiki page content links */
-	body.wiki .wiki-link {
-		display: inline-block;
-		margin: 10px;
-		padding: 12px 25px;
-		background-color: #e6e0d0;
-		color: black !important; 
-		text-decoration: none;
-		font-weight: bold;
-		border-radius: 6px;
-		transition: background-color 0.2s, transform 0.2s;
-	}
-
-		body.wiki .wiki-link:hover {
-			background-color: #ccc6b5;
-			transform: translateY(-2px);
-		}
-
-.wiki-header-image {
-	width: 200px;
-	height: 200px;
-	background-color: #ddd;
-	border-radius: 50%;
-	margin: 0 auto 20px auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 50px;
-	color: #aaa;
+.charactercreation p {
+	margin-top: 20px;
+	text-align: center;
 }

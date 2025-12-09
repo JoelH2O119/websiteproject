@@ -2,39 +2,90 @@
 <html>
 <head>
     <title>Spell Page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <nav>
+
+<body class="spellpage">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2 class="logo">D&D Hub</h2>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
-            <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
-            <li><a href="{{ url_for('classpage') }}">Go to class Page</a></li>
+            <li><a href="{{ url_for('charactercreation') }}">Create Character</a></li>
+            <li><a href="{{ url_for('wikipage') }}">Wiki</a></li>
+            <li><a href="{{ url_for('classpage') }}">Classes</a></li>
         </ul>
     </nav>
 
-    <h1>Spell List</h1>
 
-    <table>
-        <thead>
-            <tr>
-                {% for header in spells[0].keys() %}
-                <th>{{ header }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
+    <main class="hero">
+        <h1>Spell List</h1>
+        <p>Browse all available spells for your campaign.</p>
+    </main>
 
-        <tbody>
-            {% for spell in spells %}
-            <tr>
-                {% for value in spell.values() %}
-                <td>{{ value }}</td>
+    <!-- FILTER CONTROLS FOR DATABSE -->
+    <div class="table-filter">
+        <label for="columnSelect">Filter by:</label>
+        <select id="columnSelect">
+            <option value="0">Name</option>
+            <option value="2">Level</option>
+            <option value="3">School</option>
+        </select>
+
+        <label for="spellSearch">Search:</label>
+        <input type="text"
+               id="spellSearch"
+               placeholder="Type to filter spells...">
+    </div>
+
+    <!-- SPELL TABLE -->
+    <div class="table-container">
+        <table class="spell-table">
+            <thead>
+                <tr>
+                    {% for header in spells[0].keys() %}
+                    <th>{{ header }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for spell in spells %}
+                <tr>
+                    {% for value in spell.values() %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
                 {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        const searchInput = document.getElementById("spellSearch");
+        const columnSelect = document.getElementById("columnSelect");
+        const tableBody = document.querySelector(".spell-table tbody");
+        const rows = tableBody.getElementsByTagName("tr");
+
+        function filterTable() {
+            const filter = searchInput.value.toLowerCase();
+            const columnIndex = parseInt(columnSelect.value);
+
+            for (let i = 0; i < rows.length; i++) {
+                const cell = rows[i].getElementsByTagName("td")[columnIndex];
+                if (!cell) continue;
+
+                const cellText = cell.textContent.toLowerCase();
+                rows[i].style.display =
+                    cellText.includes(filter) ? "" : "none";
+            }
+        }
+
+        searchInput.addEventListener("keyup", filterTable);
+        columnSelect.addEventListener("change", filterTable);
+    </script>
 
 </body>
 </html>

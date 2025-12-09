@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Wiki Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <meta charset="UTF-8">
+    <title>Wiki</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="wiki">
 
-
-
-
-
-    <nav>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2 class="logo">D&D Hub</h2>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('charactercreation') }}">Character Creation</a></li>
+            <li><a href="{{ url_for('charactercreation') }}">Create Character</a></li>
             <li><a href="{{ url_for('wikipage') }}">Wiki</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="{{ url_for('login') }}" class="nav-btn">Login</a></li>
         </ul>
     </nav>
 
-    <h1>Wiki Page</h1>
-    <p>Explore classes, spells, and items!</p>
+    <!-- HERO / PAGE TITLE -->
+    <main class="hero">
+        <h1>Wiki</h1>
+        <p>Explore all classes, spells, items, and more!</p>
+    </main>
 
+    <!-- WIKI LINKS -->
+    <section class="wiki-links">
+        <a href="{{ url_for('classpage') }}" class="btn primary">Class Page</a>
+        <a href="{{ url_for('spellpage') }}" class="btn primary">Spell Page</a>
+        <a href="{{ url_for('itempage') }}" class="btn primary">Item Page</a>
+        <a href="{{ url_for('charactercreation') }}" class="btn secondary">Create Character</a>
+    </section>
 
-    <a class="wiki-link" href="{{ url_for('classpage') }}">Go to Class Page</a>
-    <a class="wiki-link" href="{{ url_for('spellpage') }}">Go to Spell Page</a>
-    <a class="wiki-link" href="{{ url_for('itempage') }}">Go to Item Page</a>
-    <a class="wiki-link" href="{{ url_for('charactercreation') }}">Go to Character Creation</a>
-
+    <footer>
+        <p></p>
+    </footer>
 
 </body>
 </html>

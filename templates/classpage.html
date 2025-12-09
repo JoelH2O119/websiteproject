@@ -4,36 +4,23 @@
     <title>class page</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
 
-    <style>
-      
-        .subclass-list {
-            display: none; 
-            margin-top: 10px;
-        }
-
-        .class-block h2 {
-            cursor: pointer;
-            user-select: none;
-        }
-
-            .class-block h2:hover {
-                color: #0044cc;
-            }
-    </style>
 
 </head>
-<body class="class-page">
-
-    <nav>
+<body class="classpage">
+    <<nav class="navbar">
+        <h2 class="logo">D&D Hub</h2>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('charactercreation') }}">Go to character creation Page</a></li>
-            <li><a href="{{ url_for('wikipage') }}">Go to wiki Page</a></li>
+            <li><a href="{{ url_for('charactercreation') }}">Create Character</a></li>
+            <li><a href="{{ url_for('wikipage') }}">Wiki</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="{{ url_for('login') }}" class="nav-btn">Login</a></li>
         </ul>
     </nav>
-   
-    
+    <main class="hero">
+        <h1>Classes</h1>
+        <p>Click on a class to reveal its subclasses and details!</p>
+    </main>
 
 
 
@@ -308,5 +295,5 @@
 
 
 
-    </>
+</body>
 </html>

@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <title>D&D site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body class="index">
-    <nav>
+
+    <!-- NAV -->
+    <nav class="navbar">
+        <h2 class="logo">D&D Hub</h2>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('charactercreation') }}">Character Creation</a></li>
+            <li><a href="{{ url_for('charactercreation') }}">Create Character</a></li>
             <li><a href="{{ url_for('wikipage') }}">Wiki</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="{{ url_for('login') }}" class="nav-btn">Login</a></li>
         </ul>
     </nav>
 
-   
-    <div class="hero-image"></div>
+    <!-- HERO SECTION -->
+    <main class="hero">
+        <h1>Welcome, Adventurer</h1>
+        <p>
+            Create heroes, explore lore, and prepare for your next campaign.
+        </p>
 
-    <h1>Welcome to My Flask Site</h1>
-    <p>Embark on your D&D adventure!</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('charactercreation') }}" class="btn primary">Create a Character</a>
+            <a href="{{ url_for('wikipage') }}" class="btn secondary">Explore the World</a>
+        </div>
+    </main>
 
-    <a href="{{ url_for('login') }}" class="hero-button">Login</a>
-    <a href="{{ url_for('register') }}" class="hero-button">Create Account</a>
-    <a href="{{ url_for('charactercreation') }}" class="hero-button">Create Character</a>
-    <a href="{{ url_for('wikipage') }}" class="hero-button">Go to Wiki</a>
+    <footer>
+        <p> </p>
+    </footer>
+
 </body>
 </html>
