@@ -10,13 +10,18 @@
 
     <!-- NAV -->
     <nav class="navbar">
-        <h2 class="logo">D&D Hub</h2>
+        <div class="logo">DnD Builder</div>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
+
+            {% if user %}
+            <li><a href="{{ url_for('character_list') }}">My Characters</a></li>
             <li><a href="{{ url_for('charactercreation') }}">Create Character</a></li>
-            <li><a href="{{ url_for('wikipage') }}">Wiki</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="{{ url_for('login') }}" class="nav-btn">Login</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout ({{ user.username }})</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
         </ul>
     </nav>
 

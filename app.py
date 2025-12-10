@@ -3,14 +3,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import requests
 import csv
+from functools import wraps
 
 app = Flask(__name__)
 app.secret_key = "something-very-secret-change-this"
-
 API_BASE = "https://www.dnd5eapi.co/api/2014"
 
-# ---------------- DATABASE INIT ---------------- #
-
+# ---------------- DATABASE INIT ----------------
 def init_db():
     conn = sqlite3.connect("users.db")
     c = conn.cursor()
@@ -31,8 +30,11 @@ def init_db():
             user_id INTEGER NOT NULL,
             name TEXT NOT NULL,
             class TEXT,
+            subclass TEXT,
             race TEXT,
             alignment TEXT,
+            level INTEGER,
+            hp INTEGER,
             str INTEGER,
             dex INTEGER,
             con INTEGER,
@@ -48,12 +50,9 @@ def init_db():
 
 init_db()
 
-
-# ---------------- LOGIN HELPERS ---------------- #
-
+# ---------------- LOGIN HELPERS ----------------
 def login_required(f):
     """Decorator to restrict access to logged-in users."""
-    from functools import wraps
     @wraps(f)
     def wrapped(*args, **kwargs):
         if "user_id" not in session:
@@ -74,9 +73,7 @@ def get_current_user():
             return {"id": row[0], "username": row[1]}
     return None
 
-
-# ---------------- ROUTES ---------------- #
-
+# ---------------- ROUTES ----------------
 @app.route("/")
 def home():
     return render_template("index.html", user=get_current_user())
@@ -133,38 +130,42 @@ def logout():
     flash("Logged out successfully.")
     return redirect(url_for("home"))
 
-# ---------------- RESTRICTED PAGES ---------------- #
-
+# ---------------- RESTRICTED PAGES ----------------
 @app.route("/charactercreation")
 @login_required
 def charactercreation():
-    classes = requests.get(f"{API_BASE}/classes").json().get("results", [])
+    classes_basic = requests.get(f"{API_BASE}/classes").json().get("results", [])
     races = requests.get(f"{API_BASE}/races").json().get("results", [])
-    return render_template("charactercreation.html", classes=classes, races=races)
+    levels = list(range(1, 21))
+
+    classes = []
+    for cls in classes_basic:
+        details = requests.get(f"{API_BASE}/classes/{cls['index']}").json()
+        classes.append({
+            "name": cls["name"],
+            "index": cls["index"],
+            "hit_die": details["hit_die"]
+        })
+
+    return render_template("charactercreation.html", classes=classes, races=races, levels=levels)
 
 @app.route("/createcharacter", methods=["POST"])
 @login_required
 def create_character():
-    data = request.form
     user = get_current_user()
+    data = request.form
+
     conn = sqlite3.connect("users.db")
     c = conn.cursor()
     c.execute("""
-        INSERT INTO characters 
-        (user_id, name, class, race, alignment, str, dex, con, int, wis, cha)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO characters (
+            user_id, name, class, subclass, race, alignment, level, hp,
+            str, dex, con, int, wis, cha
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        user["id"],
-        data["name"],
-        data["class"],
-        data["race"],
-        data["alignment"],
-        data["str"],
-        data["dex"],
-        data["con"],
-        data["int"],
-        data["wis"],
-        data["cha"]
+        user["id"], data["name"], data["class"], data.get("subclass"), data["race"],
+        data["alignment"], data["level"], data["hp"], data["str"], data["dex"],
+        data["con"], data["int"], data["wis"], data["cha"]
     ))
     conn.commit()
     conn.close()
@@ -182,8 +183,77 @@ def character_list():
     conn.close()
     return render_template("my_character.html", chars=chars)
 
-# ---------------- OTHER PAGES ---------------- #
+@app.route("/characters/delete/<int:char_id>", methods=["POST"])
+@login_required
+def delete_character(char_id):
+    user = get_current_user()
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("DELETE FROM characters WHERE id = ? AND user_id = ?", (char_id, user["id"]))
+    conn.commit()
+    conn.close()
+    flash("Character deleted.")
+    return redirect(url_for("character_list"))
 
+@app.route("/character/<int:char_id>")
+@login_required
+def character_detail(char_id):
+    user = get_current_user()
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM characters WHERE id = ? AND user_id = ?", (char_id, user["id"]))
+    char = c.fetchone()
+    conn.close()
+
+    if not char:
+        flash("Character not found.")
+        return redirect(url_for("character_list"))
+
+    class_index = char[3]  # Fetch class features
+    features = requests.get(f"{API_BASE}/classes/{class_index}/features").json().get("results", [])
+    return render_template("character_detail.html", char=char, features=features)
+
+@app.route("/character/<int:char_id>")
+@login_required
+def character_detail_page(char_id):
+    user = get_current_user()
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM characters WHERE id = ? AND user_id = ?", (char_id, user["id"]))
+    char = c.fetchone()
+    conn.close()
+
+    if not char:
+        flash("Character not found or you don't have access.")
+        return redirect(url_for("character_list"))
+
+    class_index = char[3]
+    subclass_index = char[4]
+    char_level = int(char[7])
+    features = []
+
+    # Get class features
+    class_data = requests.get(f"{API_BASE}/classes/{class_index}").json()
+    if "features" in class_data:
+        for f in class_data["features"]:
+            if f.get("level") and f["level"] <= char_level:
+                features.append(f)
+            elif "level" not in f:
+                features.append(f)
+
+    # Get subclass features
+    if subclass_index:
+        subclass_data = requests.get(f"{API_BASE}/subclasses/{subclass_index}").json()
+        if "features" in subclass_data:
+            for f in subclass_data["features"]:
+                if f.get("level") and f["level"] <= char_level:
+                    features.append(f)
+                elif "level" not in f:
+                    features.append(f)
+
+    return render_template("character_detail.html", char=char, features=features)
+
+# ---------------- OTHER PAGES ----------------
 @app.route("/wikipage")
 def wikipage():
     return render_template("wikipage.html")
@@ -211,8 +281,6 @@ def itempage():
     item_list = requests.get(f"{API_BASE}/equipment").json().get("results", [])
     return render_template("itempage.html", items=item_list)
 
-
-# ---------------- RUN APP ---------------- #
-
+# ---------------- RUN APP ----------------
 if __name__ == "__main__":
     app.run(debug=True)

@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "C:\\webapp\\webproject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\character_detail.html||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\character_detail.html||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\my_character.html||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\my_character.html||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\charactercreation.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\charactercreation.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\static\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:static\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
@@ -11,40 +31,12 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\wikipage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\spellpage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\spellpage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\register.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\register.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\my_characters.html||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\my_characters.html||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\itempage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\itempage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\classpage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\classpage.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\templates\\charactercreation.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:templates\\charactercreation.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\webapp\\webproject\\app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,11 +46,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "character_detail.html",
+              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\character_detail.html",
+              "RelativeDocumentMoniker": "templates\\character_detail.html",
+              "ToolTip": "C:\\webapp\\webproject\\templates\\character_detail.html",
+              "RelativeToolTip": "templates\\character_detail.html",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-12-10T03:16:26.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "login.html",
+              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\login.html",
+              "RelativeDocumentMoniker": "templates\\login.html",
+              "ToolTip": "C:\\webapp\\webproject\\templates\\login.html",
+              "RelativeToolTip": "templates\\login.html",
+              "ViewState": "AgIAADIAAAAAAAAAAAAowF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-24T02:31:35.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "my_character.html",
+              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\my_character.html",
+              "RelativeDocumentMoniker": "templates\\my_character.html",
+              "ToolTip": "C:\\webapp\\webproject\\templates\\my_character.html",
+              "RelativeToolTip": "templates\\my_character.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-24T02:31:19.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "app.py",
+              "DocumentMoniker": "C:\\webapp\\webproject\\app.py",
+              "RelativeDocumentMoniker": "app.py",
+              "ToolTip": "C:\\webapp\\webproject\\app.py",
+              "RelativeToolTip": "app.py",
+              "ViewState": "AgIAAPoAAAAAAAAAAAAiwB4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-11-18T19:39:27.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "wikipage.html",
+              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\wikipage.html",
+              "RelativeDocumentMoniker": "templates\\wikipage.html",
+              "ToolTip": "C:\\webapp\\webproject\\templates\\wikipage.html",
+              "RelativeToolTip": "templates\\wikipage.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-18T18:57:29.335Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "charactercreation.html",
+              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\charactercreation.html",
+              "RelativeDocumentMoniker": "templates\\charactercreation.html",
+              "ToolTip": "C:\\webapp\\webproject\\templates\\charactercreation.html",
+              "RelativeToolTip": "templates\\charactercreation.html",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAQwNsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-18T16:56:36.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "register.html",
               "DocumentMoniker": "C:\\webapp\\webproject\\templates\\register.html",
               "RelativeDocumentMoniker": "templates\\register.html",
@@ -72,131 +141,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "login.html",
-              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\login.html",
-              "RelativeDocumentMoniker": "templates\\login.html",
-              "ToolTip": "C:\\webapp\\webproject\\templates\\login.html",
-              "RelativeToolTip": "templates\\login.html",
-              "ViewState": "AgIAADIAAAAAAAAAAAAowF8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-24T02:31:35.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "my_characters.html",
-              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\my_characters.html",
-              "RelativeDocumentMoniker": "templates\\my_characters.html",
-              "ToolTip": "C:\\webapp\\webproject\\templates\\my_characters.html",
-              "RelativeToolTip": "templates\\my_characters.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-24T02:31:19.126Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "app.py",
-              "DocumentMoniker": "C:\\webapp\\webproject\\app.py",
-              "RelativeDocumentMoniker": "app.py",
-              "ToolTip": "C:\\webapp\\webproject\\app.py",
-              "RelativeToolTip": "app.py",
-              "ViewState": "AgIAALEAAAAAAAAAAAAUwNoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2025-11-18T19:39:27.679Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "classpage.html",
-              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\classpage.html",
-              "RelativeDocumentMoniker": "templates\\classpage.html",
-              "ToolTip": "C:\\webapp\\webproject\\templates\\classpage.html",
-              "RelativeToolTip": "templates\\classpage.html",
-              "ViewState": "AgIAAMUAAAAAAAAAAAAowCsBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-18T18:57:38.888Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "wikipage.html",
-              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\wikipage.html",
-              "RelativeDocumentMoniker": "templates\\wikipage.html",
-              "ToolTip": "C:\\webapp\\webproject\\templates\\wikipage.html",
-              "RelativeToolTip": "templates\\wikipage.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-18T18:57:29.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "spellpage.html",
-              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\spellpage.html",
-              "RelativeDocumentMoniker": "templates\\spellpage.html",
-              "ToolTip": "C:\\webapp\\webproject\\templates\\spellpage.html",
-              "RelativeToolTip": "templates\\spellpage.html",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAowFsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-18T18:57:23.714Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "itempage.html",
-              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\itempage.html",
-              "RelativeDocumentMoniker": "templates\\itempage.html",
-              "ToolTip": "C:\\webapp\\webproject\\templates\\itempage.html",
-              "RelativeToolTip": "templates\\itempage.html",
-              "ViewState": "AgIAABkAAAAAAAAAAAAowEUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-18T18:57:04.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "style.css",
               "DocumentMoniker": "C:\\webapp\\webproject\\static\\style.css",
               "RelativeDocumentMoniker": "static\\style.css",
               "ToolTip": "C:\\webapp\\webproject\\static\\style.css",
               "RelativeToolTip": "static\\style.css",
-              "ViewState": "AgIAAMEBAAAAAAAAAAAowNwBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAK8BAAAAAAAAAAAowLkBAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-18T17:35:42.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T17:35:42.996Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "index.html",
               "DocumentMoniker": "C:\\webapp\\webproject\\templates\\index.html",
               "RelativeDocumentMoniker": "templates\\index.html",
               "ToolTip": "C:\\webapp\\webproject\\templates\\index.html",
               "RelativeToolTip": "templates\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2025-11-18T16:56:39.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "charactercreation.html",
-              "DocumentMoniker": "C:\\webapp\\webproject\\templates\\charactercreation.html",
-              "RelativeDocumentMoniker": "templates\\charactercreation.html",
-              "ToolTip": "C:\\webapp\\webproject\\templates\\charactercreation.html",
-              "RelativeToolTip": "templates\\charactercreation.html",
-              "ViewState": "AgIAABEAAAAAAAAAAAAowD4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-18T16:56:36.671Z",
               "EditorCaption": ""
             }
           ]

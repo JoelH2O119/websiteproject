@@ -1,62 +1,219 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Character creation</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <title>Character Creation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="charactercreation">
 
-    <nav>
+    <!-- Navbar -->
+    <nav class="navbar">
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('charactercreation') }}">Character Creation</a></li>
             <li><a href="{{ url_for('wikipage') }}">Wiki Page</a></li>
-            <li><a href="#about">About</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <h2>Character Creation</h2>
+        <form method="POST" action="{{ url_for('create_character') }}">
+            <!-- Name -->
+            <label>Character Name:</label>
+            <input type="text" name="name" required>
 
-        <label>Character Name:</label>
-        <input type="text" name="name" required>
+            <!-- Level -->
+            <label>Level:</label>
+            <select name="level" id="levelSelect" required>
+                {% for lvl in range(1, 21) %}
+                <option value="{{ lvl }}">Level {{ lvl }}</option>
+                {% endfor %}
+            </select>
 
-        <label>Alignment:</label>
-        <select name="alignment">
-            <option>Lawful Good</option>
-            <option>Neutral Good</option>
-            <option>Chaotic Good</option>
-            <option>Lawful Neutral</option>
-            <option>Neutral</option>
-            <option>Chaotic Neutral</option>
-            <option>Lawful Evil</option>
-            <option>Neutral Evil</option>
-            <option>Chaotic Evil</option>
-        </select>
+            <!-- Alignment -->
+            <label>Alignment:</label>
+            <select name="alignment" required>
+                <option>Lawful Good</option>
+                <option>Neutral Good</option>
+                <option>Chaotic Good</option>
+                <option>Lawful Neutral</option>
+                <option>Neutral</option>
+                <option>Chaotic Neutral</option>
+                <option>Lawful Evil</option>
+                <option>Neutral Evil</option>
+                <option>Chaotic Evil</option>
+            </select>
 
-        <label>Strength:</label>
-        <input type="number" name="str">
+            <!-- Race -->
+            <label>Race:</label>
+            <select name="race" id="raceSelect" required>
+                {% for race in races %}
+                <option value="{{ race.index }}">{{ race.name }}</option>
+                {% endfor %}
+            </select>
 
-        <label>Dexterity:</label>
-        <input type="number" name="dex">
+            <!-- Class -->
+            <label>Class:</label>
+            <select name="class" id="classSelect" required>
+                {% for cls in classes %}
+                <option value="{{ cls.index }}" data-hit-die="{{ cls.hit_die | default(0) }}">{{ cls.name }}</option>
+                {% endfor %}
+            </select>
 
-        <label>Constitution:</label>
-        <input type="number" name="con">
+            <!-- Subclass -->
+            <label>Subclass:</label>
+            <select name="subclass" id="subclassSelect">
+                <option value="">-- Select a subclass --</option>
+            </select>
 
-        <label>Intelligence:</label>
-        <input type="number" name="int">
+            <!-- Ability Scores -->
+            <h3>Ability Scores</h3>
+            <p>Enter manually or double-click inputs to roll (4d6 drop lowest)</p>
 
-        <label>Wisdom:</label>
-        <input type="number" name="wis">
+            <label>Strength:</label>
+            <input type="number" name="str" id="str">
+            <label>Dexterity:</label>
+            <input type="number" name="dex" id="dex">
+            <label>Constitution:</label>
+            <input type="number" name="con" id="con">
+            <label>Intelligence:</label>
+            <input type="number" name="int" id="int">
+            <label>Wisdom:</label>
+            <input type="number" name="wis" id="wis">
+            <label>Charisma:</label>
+            <input type="number" name="cha" id="cha">
 
-        <label>Charisma:</label>
-        <input type="number" name="cha">
+            <!-- HP -->
+            <label>Hit Points (manual, + Con modifier):</label>
+            <input type="number" name="hp" id="hp">
 
-        <p>This is another page in your site!</p>
+            <button type="submit">Create Character</button>
+        </form>
+
         <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
     </div>
 
-</body>
+    <script>
+        // --- Utility: Roll 4d6 drop lowest ---
+        function rollStat() {
+            let rolls = [];
+            for (let i = 0; i < 4; i++) rolls.push(Math.floor(Math.random() * 6) + 1);
+            rolls.sort((a, b) => a - b);
+            rolls.shift(); // drop lowest
+            return rolls.reduce((a, b) => a + b, 0);
+        }
+
+        // --- Element references ---
+        const classSelect = document.getElementById("classSelect");
+        const subclassSelect = document.getElementById("subclassSelect");
+        const conInput = document.getElementById("con");
+        const hpInput = document.getElementById("hp");
+        const levelSelect = document.getElementById("levelSelect");
+        const raceSelect = document.getElementById("raceSelect");
+        const strInput = document.getElementById("str");
+        const dexInput = document.getElementById("dex");
+        const intInput = document.getElementById("int");
+        const wisInput = document.getElementById("wis");
+        const chaInput = document.getElementById("cha");
+
+        // --- Base stats store ---
+        let baseStats = { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 };
+
+        // --- Apply racial bonuses ---
+        async function applyRacialBonuses() {
+            const race = raceSelect.value;
+            const res = await fetch(`https://www.dnd5eapi.co/api/races/${race}`);
+            const data = await res.json();
+
+            let newStats = { ...baseStats };
+
+            if (data.ability_bonuses) {
+                data.ability_bonuses.forEach(bonus => {
+                    switch (bonus.ability_score.index) {
+                        case "str": newStats.str += bonus.bonus; break;
+                        case "dex": newStats.dex += bonus.bonus; break;
+                        case "con": newStats.con += bonus.bonus; break;
+                        case "int": newStats.int += bonus.bonus; break;
+                        case "wis": newStats.wis += bonus.bonus; break;
+                        case "cha": newStats.cha += bonus.bonus; break;
+                    }
+                });
+            }
+
+            // Update inputs
+            strInput.value = newStats.str;
+            dexInput.value = newStats.dex;
+            conInput.value = newStats.con;
+            intInput.value = newStats.int;
+            wisInput.value = newStats.wis;
+            chaInput.value = newStats.cha;
+        }
+
+        // --- Update HP (manual + Con modifier) ---
+        function updateHP() {
+            const con = parseInt(conInput.value) || 0;
+            const conMod = Math.floor((con - 10) / 2);
+            const baseHP = parseInt(hpInput.dataset.baseHp) || 0;
+            hpInput.value = baseHP + conMod;
+        }
+
+        // --- Update subclasses dynamically ---
+        async function updateSubclasses() {
+            const classIndex = classSelect.value;  // e.g., "wizard"
+            subclassSelect.innerHTML = '<option value="">-- Select a subclass --</option>';
+
+            if (!classIndex) return;
+
+            // Fetch subclasses for the selected class only
+            const res = await fetch(`https://www.dnd5eapi.co/api/classes/${classIndex}/subclasses`);
+            const data = await res.json();
+
+            if (data.results) {
+                data.results.forEach(sub => {
+                    const option = document.createElement("option");
+                    option.value = sub.index;   // API index (e.g., "evocation")
+                    option.textContent = sub.name; // Friendly name (e.g., "Evocation")
+                    subclassSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Event listener: update subclasses whenever class changes
+        classSelect.addEventListener("change", updateSubclasses);
+
+        // --- Event listeners ---
+        raceSelect.addEventListener("change", applyRacialBonuses);
+
+        [strInput, dexInput, conInput, intInput, wisInput, chaInput].forEach(input => {
+            // Manual input
+            input.addEventListener("input", () => {
+                baseStats[input.name] = parseInt(input.value) || 0;
+                applyRacialBonuses();
+                updateHP();
+            });
+
+            // Double-click to roll
+            input.addEventListener("dblclick", () => {
+                baseStats[input.name] = rollStat();
+                applyRacialBonuses();
+                updateHP();
+            });
+        });
+
+        // --- Track manual HP input ---
+        hpInput.addEventListener("input", () => {
+            // Store the manual base HP
+            hpInput.dataset.baseHp = hpInput.value || 0;
+            updateHP();
+        });
+
+
+        // Subclasses update
+        classSelect.addEventListener("change", updateSubclasses);
+
+        // HP update when Con changes
+        conInput.addEventListener("input", updateHP);
+    </script>
 
 </body>
 </html>
